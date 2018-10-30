@@ -144,6 +144,7 @@ void SettingsTreeModel::setupModelData(const QJsonObject &data, SettingsTreeItem
     if(data.contains("max")) parent->setMaxValue(data["max"].toVariant());
     if(data.contains("default")) parent->setDefaultVal(data["default"].toVariant());
     if(data.contains("step")) parent->setStepSize(data["step"].toVariant());
+    if(data.contains("valueEnums")) parent->setValueEnum(data["valueEnums"].toArray());
     if(!data.contains("settings") || !data["settings"].isArray()) return;
 
     QJsonArray arr = data["settings"].toArray();

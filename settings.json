@@ -30,7 +30,7 @@
                 "description" : "grandChild1 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 "widget" : "3",
                 "value" : "true",
-                "default" : "false"
+                "default" : "true"
             },
             "grandChild2" : {
                 "description" : "grandChild2 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -78,9 +78,9 @@
             "grandChild2" : {
                 "description" : "grandChild2 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 "widget" : "4",
-                "value" : "option1",
-                "default" : "option1",
-                "valueEnums" : ["option1", "option2", "option3"]
+                "value" : "option4",
+                "default" : "option5",
+                "valueEnums" : ["option1", "option2", "option3", "option4", "option5"]
             }
         }
     }

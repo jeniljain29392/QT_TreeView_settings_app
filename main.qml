@@ -61,7 +61,7 @@ ApplicationWindow {
                         resizable: true
                     }
 
-                    property real _val: model.data(model.index(0,0), SettingsTreeRoles.ValRole)
+                    property var _val: model.data(model.index(0,0), SettingsTreeRoles.ValRole)
 
                     selection: ItemSelectionModel {
                         model: SettingsTreeModel
@@ -105,7 +105,6 @@ ApplicationWindow {
                         else view.expand(index)
                         view.selection.setCurrentIndex(index, ItemSelectionModel.Select)
                         _val = model.data(selection.currentIndex, SettingsTreeRoles.ValRole)
-                        console.log(_val)
                     }
 
                     Component.onCompleted: {
@@ -173,10 +172,11 @@ ApplicationWindow {
                         spacing: 20
 
                         property real _type: view.model.data(view.selection.currentIndex, SettingsTreeRoles.TypeRole)
-                        property real _defV: view.model.data(view.selection.currentIndex, SettingsTreeRoles.DefValRole)
                         property real _minV: view.model.data(view.selection.currentIndex, SettingsTreeRoles.MinValRole)
                         property real _maxV: view.model.data(view.selection.currentIndex, SettingsTreeRoles.MaxValRole)
                         property real _step: view.model.data(view.selection.currentIndex, SettingsTreeRoles.StepSizeRole)
+                        property var  _defV: view.model.data(view.selection.currentIndex, SettingsTreeRoles.DefValRole)
+                        property var  _valE: view.model.data(view.selection.currentIndex, SettingsTreeRoles.ValEnumRole)
 
                         Text {
                             id: settingsTitle
@@ -251,12 +251,27 @@ ApplicationWindow {
                             anchors.verticalCenter: parent.verticalCenter
                         }
 
-                        CheckBox {
-                            id: widgetCheckBox
+                        Rectangle {
+                            id: widgetCheckBoxRect
                             visible: widgetRow._type === WidgetType.CheckBox
-                            anchors.verticalCenter: parent.verticalCenter
                             width: settingsWidget.width * 0.1
-                            checked: view._val
+                            height: settingsWidget.width * 0.1
+                            anchors.verticalCenter: parent.verticalCenter
+
+                            CheckBox {
+                                id: widgetCheckBox
+                                checked: view._val === "true"
+                                anchors.centerIn: parent
+                            }
+
+                            MouseArea {
+                                z: 1
+                                anchors.fill: parent
+                                acceptedButtons: Qt.LeftButton
+                                onClicked: {
+                                    view._val = (view._val === "true") ? "false" : "true"
+                                }
+                            }
                         }
 
                         Text {
@@ -265,6 +280,27 @@ ApplicationWindow {
                             width: settingsWidget.width * 0.3
                             visible: widgetCheckBox.visible
                             anchors.verticalCenter: parent.verticalCenter
+                        }
+
+                        Column {
+                            id: widgetRadioBtnCol
+                            width: settingsWidget.width * 0.4 + widgetRow.spacing
+                            anchors.verticalCenter: parent.verticalCenter
+                            visible: widgetRow._type === WidgetType.RadioBtnGroup
+
+                            ExclusiveGroup { id: valEnumGroup }
+                            spacing: 5
+
+                            Repeater {
+                                id: widgetRadioBtnRepeater
+                                model: widgetRow._valE
+                                RadioButton {
+                                    text: modelData
+                                    objectName: text
+                                    checked: text === view._val
+                                    exclusiveGroup: valEnumGroup
+                                }
+                            }
                         }
 
                         Column {
@@ -286,6 +322,12 @@ ApplicationWindow {
                                         break
                                     case WidgetType.Spinner:
                                         view.model.setData(view.selection.currentIndex, widgetRowSpinBox.value, SettingsTreeRoles.ValRole)
+                                        break
+                                    case WidgetType.CheckBox:
+                                        view.model.setData(view.selection.currentIndex, view._val, SettingsTreeRoles.ValRole)
+                                        break
+                                    case WidgetType.RadioBtnGroup:
+                                        view.model.setData(view.selection.currentIndex, valEnumGroup.current.objectName, SettingsTreeRoles.ValRole)
                                         break
                                     }
                                 }
