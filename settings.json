@@ -1,0 +1,87 @@
+{
+    "settings" : ["mainGroup1", "mainGroup2"],
+    "widgetTypes" : ["EmptyWidget", "Slider", "Spinner", "CheckBox", "RadioBtnGroup"],
+    "mainGroup1" : {
+        "description" : "mainGroup1 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "settings" : ["child1", "child2"],
+        "child1" : {
+            "description" : "child1 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "settings" : ["grandChild1", "grandChild2"],
+            "grandChild1" : {
+                "description" : "grandChild1 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "widget" : "3",
+                "value" : "false",
+                "default" : "false"
+            },
+            "grandChild2" : {
+                "description" : "grandChild2 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "widget" : "1",
+                "value" : "0.25",
+                "default" : "0.10",
+                "min" : "0",
+                "max" : "1",
+                "step" : "0.05"
+            }
+        },
+        "child2" : {
+            "description" : "child2 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "settings" : ["grandChild1", "grandChild2"],
+            "grandChild1" : {
+                "description" : "grandChild1 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "widget" : "3",
+                "value" : "true",
+                "default" : "false"
+            },
+            "grandChild2" : {
+                "description" : "grandChild2 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "widget" : "4",
+                "value" : "option1",
+                "default" : "option2",
+                "valueEnums" : ["option1", "option2", "option3"]
+            }
+        }
+    },
+    "mainGroup2" : {
+        "description" : "mainGroup2 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "settings" : ["child1", "child2"],
+        "child1" : {
+            "description" : "child1 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "settings" : ["grandChild1", "grandChild2"],
+            "grandChild1" : {
+                "description" : "grandChild1 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "widget" : "1",
+                "value" : "25",
+                "default" : "10",
+                "min" : "0",
+                "max" : "100",
+                "step" : "5"
+            },
+            "grandChild2" : {
+                "description" : "grandChild2 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "widget" : "2",
+                "value" : "25",
+                "default" : "10",
+                "min" : "0",
+                "max" : "50",
+                "step" : "2"
+            }
+        },
+        "child2" : {
+            "description" : "child2 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "settings" : ["grandChild1", "grandChild2"],
+            "grandChild1" : {
+                "description" : "grandChild1 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "widget" : "3",
+                "value" : "true",
+                "default" : "false"
+            },
+            "grandChild2" : {
+                "description" : "grandChild2 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "widget" : "4",
+                "value" : "option1",
+                "default" : "option1",
+                "valueEnums" : ["option1", "option2", "option3"]
+            }
+        }
+    }
+}
